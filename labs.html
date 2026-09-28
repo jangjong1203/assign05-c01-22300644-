@@ -1,38 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <!--클릭버튼 실습1-->
+    xxxxxxxxxxxzxzxxzxxxxxxxxxzxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxcx<!--덧셈계산기 실습-->
+    <script>
+        
+        function clickMe() {
+            //alret("버튼이 클릭되었습니다.");  
+            const btn = document.querySelector("#btn");
+            btn.innerHTML="<h1>버튼이 클릭되었습니다.</h1>";
+        }
+
+        function add() {
+            const num1 =
+                document.querySelector('#num1').value;
+
+            const num2 =
+                document.querySelector('#num2').value;
+
+            const result =
+                Number(num1) + Number(num2);
+
+            document.querySelector('#result').value = result;
+
+        }
+
+
+    </script>
+
+
 </head>
+
 <body>
+
+    <!--클릭버튼 실습1-->
+    <h3>Internal JS</h3>
+    <button id="btn" onclick="clickMe()">Click Me</button>
+    <!--클릭버튼 실습2-->
+    <h3>Inline JS</h3>
+    <div id="clickBtn2">Click Me</div>
+
+    <!--덧셈계산기 실습-->
     <h1>덧셈 계산기</h1>
-    <input type="text" id="num1"size="4">
+    <input type="text" id="num1" size="4">
     +
     <input type="text" id="num2" size="4">
     <button onclick="add()" id="addBtn">=</button>
+
+    <input id="result">
+
+
     
-    <input  id="result">
+    <!--클릭버튼 실습2-->
+    <script>
+        const clickBtn2=document.querySelector('#clickBtn2');
+        clickBtn2.addEventListener("click", function(){
+            clickBtn2.innerHTML="<h1>버튼이 클릭되었습니다</h1>"
 
-<script>
-
-    function add(){
-        const num1=
-            document.querySelector('#num1').value;
-
-        const num2=
-            document.querySelector('#num2').value;
-
-        const result=
-            Number(num1)+Number(num2);
-
-        document.querySelector('#result').value=result;
-
-    }
-
-
-</script>
-
+        });
+    </script>
 
 </body>
+
 </html>
