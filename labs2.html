@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--window-->
+    <script>
+        function Clickme() {
+            alert("helllo!");
+
+        }
+
+        function checkform(e) {
+            const username = document.querySelector("#username");
+            if (username.value == '') {
+                alert("이름을 입력하시오!");
+                username.focus();
+                e.preventDefault();
+            }
+        }
+        window.addEventListener("load", function () {
+            const btn1 = document.querySelector("#btn1");
+            btn1.addEventListener("click", Clickme);
+
+            const form1 = document.querySelector("#form1");
+            form1.addEventListener("submit", checkform);
+        })
+        //internal
+        function Clickme2() {
+            const btn2 = document.querySelector("#btn2");
+            btn2.innerHTML = "<h1>버튼이 클릭되었습니다.</h1>";
+        }
+    </script>
+
+
+
+</head>
+
+<body>
+    <!--window-->
+    <button id="btn1">Click me</button>
+
+
+    <!---->
+    <button id="btn2" onclick="Clickme2()">Click me</button>
+
+
+    <form id="form1" action="login_ok.html" method="post">
+        <input id="username" type="text" name="username" placeholder="이름을 입력하시오.">
+        <input type="submit" value="로그인">
+    </form>
+</body>
+
+
+
+
+
+</html>
