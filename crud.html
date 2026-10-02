@@ -12,81 +12,82 @@
                 title: "제목",
                 director: "감독",
                 genre: "장르",
-                year:2026,
+                year: 2026,
                 rating: 10.0
-            },{
+            }, {
                 id: 2,
-                title:"기생충",
+                title: "기생충",
                 director: "봉준호",
                 genre: "스릴러",
-                year:2019,
+                year: 2019,
                 rating: 9.5
-            },{
+            }, {
                 id: 3,
                 title: "인터스텔라",
                 director: "크리스토퍼놀란",
                 genre: "SF",
-                year:2014,
+                year: 2014,
                 rating: 8.8
             }
         ]
 
-        window.addEventListener("load",function(){
-                const title=document.querySelector("#title");
-                const director=document.querySelector("#director");
-                const genre=document.querySelector("#genre");
-                const year=document.querySelector("#year");
-                const rating=document.querySelector("#rating");
-                const add=document.querySelector("#add");
-                add.addEventListener("click",function(e){
-                        if (title.value == '') {
-                            alert("제목을 입력하시오!");
-                            title.focus();
-                            e.preventDefault();
-                            return;
-                        }
-                        if (director.value == '') {
-                            alert("감독을 입력하시오!");
-                            director.focus();
-                            e.preventDefault();
-                            return;
-                        }
-                        if (genre.value == '') {
-                            alert("장르을 입력하시오!");
-                            genre.focus();
-                            e.preventDefault();
-                            return;
-                        }
-                        if (year.value == '') {
-                            alert("개봉연도을 입력하시오!");
-                            year.focus();
-                            e.preventDefault();
-                            return;
-                        }
-                        if (rating.value == '') {
-                            alert("평점을 입력하시오!");
-                            rating.focus();
-                            e.preventDefault();
-                            return;
-                        }
-                        
-                    const ID=movies.length+1;
-                    let newmovie={
-                        id: ID,
-                        title: title.value,
-                        director: director.value,
-                        genre: genre.value,
-                        year:year.value,
-                        rating:rating.value,
-                    }
-                    movies.push(newmovie);
-                    console.log(movies);
-                    title.value='';
-                    director.value='';
-                    genre.value='';
-                    year.value='';
-                    rating.value='';
-                })
+        window.addEventListener("load", function () {
+            const title = document.querySelector("#title");
+            const director = document.querySelector("#director");
+            const genre = document.querySelector("#genre");
+            const year = document.querySelector("#year");
+            const rating = document.querySelector("#rating");
+            const add = document.querySelector("#add");
+            add.addEventListener("click", function (e) {
+                e.preventDefault();
+                if (title.value == '') {
+                    alert("제목을 입력하시오!");
+                    title.focus();
+                    e.preventDefault();
+                    return;
+                }
+                if (director.value == '') {
+                    alert("감독을 입력하시오!");
+                    director.focus();
+                    e.preventDefault();
+                    return;
+                }
+                if (genre.value == '') {
+                    alert("장르을 입력하시오!");
+                    genre.focus();
+                    e.preventDefault();
+                    return;
+                }
+                if (year.value == '') {
+                    alert("개봉연도을 입력하시오!");
+                    year.focus();
+                    e.preventDefault();
+                    return;
+                }
+                if (rating.value == '') {
+                    alert("평점을 입력하시오!");
+                    rating.focus();
+                    e.preventDefault();
+                    return;
+                }
+
+                const ID = movies.length + 1;
+                let newmovie = {
+                    id: ID,
+                    title: title.value,
+                    director: director.value,
+                    genre: genre.value,
+                    year: year.value,
+                    rating: rating.value,
+                }
+                movies.push(newmovie);
+                console.log(movies);
+                title.value = '';
+                director.value = '';
+                genre.value = '';
+                year.value = '';
+                rating.value = '';
+            })
         })
 
 
@@ -94,6 +95,7 @@
 </head>
 
 <body>
+    <form>
         제목:
         <input type="text" id="title">
         <br>
@@ -110,21 +112,22 @@
         <input type="text" id="rating">
         <br>
         <button id="add">추가</button>
-        <hr>
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>제목</th>
-                    <th>장르</th>
-                    <th>감독</th>
-                    <th>개봉연도</th>
-                    <th>평점</th>
-            </thead>
-            <tbody id="movielist">
-                
-            </tbody>
-        </table>
+    </form>
+    <hr>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>제목</th>
+                <th>장르</th>
+                <th>감독</th>
+                <th>개봉연도</th>
+                <th>평점</th>
+        </thead>
+        <tbody id="movielist">
+
+        </tbody>
+    </table>
 
 
 
