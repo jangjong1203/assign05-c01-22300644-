@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script>
-        let movie = [
+        let movies = [
             {
                 id: 1,
                 title: "제목",
@@ -31,16 +31,62 @@
             }
         ]
 
-
         window.addEventListener("load",function(){
-                
-
-
-
-
-
-
-
+                const title=document.querySelector("#title");
+                const director=document.querySelector("#director");
+                const genre=document.querySelector("#genre");
+                const year=document.querySelector("#year");
+                const rating=document.querySelector("#rating");
+                const add=document.querySelector("#add");
+                add.addEventListener("click",function(e){
+                        if (title.value == '') {
+                            alert("제목을 입력하시오!");
+                            title.focus();
+                            e.preventDefault();
+                            return;
+                        }
+                        if (director.value == '') {
+                            alert("감독을 입력하시오!");
+                            director.focus();
+                            e.preventDefault();
+                            return;
+                        }
+                        if (genre.value == '') {
+                            alert("장르을 입력하시오!");
+                            genre.focus();
+                            e.preventDefault();
+                            return;
+                        }
+                        if (year.value == '') {
+                            alert("개봉연도을 입력하시오!");
+                            year.focus();
+                            e.preventDefault();
+                            return;
+                        }
+                        if (rating.value == '') {
+                            alert("평점을 입력하시오!");
+                            rating.focus();
+                            e.preventDefault();
+                            return;
+                        }
+                        
+                    const ID=movies.length+1;
+                    let newmovie={
+                        id: ID,
+                        title: title.value,
+                        director: director.value,
+                        genre: genre.value,
+                        year:year.value,
+                        rating:rating.value,
+                    }
+                    movies.push(newmovie);
+                    console.log(movies);
+                    title.value='';
+                    director.value='';
+                    genre.value='';
+                    year.value='';
+                    rating.value='';
+                })
         })
 
 
@@ -48,7 +94,6 @@
 </head>
 
 <body>
-    <form id="inputsection">
         제목:
         <input type="text" id="title">
         <br>
@@ -64,7 +109,7 @@
         평점:
         <input type="text" id="rating">
         <br>
-        <button id="add">add</button>
+        <button id="add">추가</button>
         <hr>
         <table>
             <thead>
@@ -77,12 +122,11 @@
                     <th>평점</th>
             </thead>
             <tbody id="movielist">
-
+                
             </tbody>
         </table>
 
 
-    </form>
 
 </body>
 

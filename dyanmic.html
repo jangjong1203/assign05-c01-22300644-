@@ -11,7 +11,7 @@
             e.target.parentElement.remove();
         }
 
-        window.addEventListener("load", function () {
+        window.addEventListener("load", function () {       
             const name = document.querySelector("#name");
             const add = document.querySelector("#add");
             const list = document.querySelector("#list");
@@ -22,7 +22,7 @@
                     const li = document.createElement("li");
                     li.textContent = flist[i];
                     list.appendChild(li);
-
+                    
                     const btn=document.createElement("button");
                     btn.textContent="X";
                     li.appendChild(btn);
