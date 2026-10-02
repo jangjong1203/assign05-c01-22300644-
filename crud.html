@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let movie = [
+            {
+                id: 1,
+                title: "제목",
+                director: "감독",
+                genre: "장르",
+                year:2026,
+                rating: 10.0
+            },{
+                id: 2,
+                title:"기생충",
+                director: "봉준호",
+                genre: "스릴러",
+                year:2019,
+                rating: 9.5
+            },{
+                id: 3,
+                title: "인터스텔라",
+                director: "크리스토퍼놀란",
+                genre: "SF",
+                year:2014,
+                rating: 8.8
+            }
+        ]
+
+
+        window.addEventListener("load",function(){
+                
+
+
+
+
+
+
+
+        })
+
+
+    </script>
+</head>
+
+<body>
+    <form id="inputsection">
+        제목:
+        <input type="text" id="title">
+        <br>
+        감독:
+        <input type="text" id="director">
+        <br>
+        장르:
+        <input type="text" id="genre">
+        <br>
+        개봉연도:
+        <input type="text" id="year">
+        <br>
+        평점:
+        <input type="text" id="rating">
+        <br>
+        <button id="add">add</button>
+        <hr>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>제목</th>
+                    <th>장르</th>
+                    <th>감독</th>
+                    <th>개봉연도</th>
+                    <th>평점</th>
+            </thead>
+            <tbody id="movielist">
+
+            </tbody>
+        </table>
+
+
+    </form>
+
+</body>
+
+</html>
