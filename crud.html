@@ -94,7 +94,6 @@
 
                         if (editId === movie.id) {
                             editId = 0;
-                            const add = document.querySelector("#add");
                             add.textContent = "추가";
                             title.value = '';
                             director.value = '';
@@ -140,13 +139,30 @@
                     year.focus();
                     e.preventDefault();
                     return;
+                }else if(isNaN(year.value)) {
+                    alert("개봉연도는 숫자로 입력하시오!");
+                    year.focus();
+                    e.preventDefault();
+                    return;
                 }
                 if (rating.value == '') {
                     alert("평점을 입력하시오!");
                     rating.focus();
                     e.preventDefault();
                     return;
-                }
+
+                } else if(isNaN(rating.value)){
+                    alert("평점은 숫자로 입력하시오!");
+                        rating.focus();
+                        e.preventDefault();
+                        return;
+                } else if (rating.value < 0 || rating.value > 10) {
+                        alert("평점은 0점에서 10점 사이로 입력하시오!");
+                        rating.focus();
+                        e.preventDefault();
+                        return;
+                    }
+                
                 if (editId == 0) {
                     const ID = nextId++;
                     let newmovie = {
