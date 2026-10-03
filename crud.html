@@ -31,19 +31,8 @@
             }
         ]
 
-        function editButton(id) {
-            movies.forEach(function (movie) {
-                if (movie.id==id) {
-                    id = movie.id;
-                    title.value = movie.title;
-                    director.value = movie.director;
-                    genre.value = movie.genre;
-                    year.value = movie.year;
-                    rating.value = movie.rating;
-                }
-            })
-        }
 
+        let editId = 0;
 
         function render() {
             const movielist = document.querySelector("#mlist");
@@ -77,13 +66,23 @@
                 const editBtn = document.createElement("button");
                 editBtn.textContent = "수정";
                 tr.appendChild(editBtn);
-                editBtn.addEventListener("click", editButton(movie.id));
+                editBtn.addEventListener("click", function () {
+                    document.querySelector("#title").value = movie.title;
+                    document.querySelector("#director").value = movie.director;
+                    document.querySelector("#genre").value = movie.genre;
+                    document.querySelector("#year").value = movie.year;
+                    document.querySelector("#rating").value = movie.rating;
+                    const add = document.querySelector("#add");
+                    add.textContent = "저장";
+                    editId = movie.id;
+                });
+
+
+
 
                 const DelBtn = document.createElement("button");
                 DelBtn.textContent = "삭제";
                 tr.appendChild(DelBtn);
-
-
             })
         }
         window.addEventListener("load", function () {
@@ -126,17 +125,33 @@
                     e.preventDefault();
                     return;
                 }
-
-                const ID = movies.length + 1;
-                let newmovie = {
-                    id: ID,
-                    title: title.value,
-                    director: director.value,
-                    genre: genre.value,
-                    year: year.value,
-                    rating: rating.value,
+                if (editId == 0) {
+                    const ID = movies.length + 1;
+                    let newmovie = {
+                        id: ID,
+                        title: title.value,
+                        director: director.value,
+                        genre: genre.value,
+                        year: year.value,
+                        rating: rating.value,
+                    }
+                    movies.push(newmovie);
+                }else{
+                    movies.forEach(function(editMovie) {
+                        if (movies.id == editId) {
+                            editMovie.title = title.value;
+                            editMovie.director = director.value;
+                            editMovie.genre = genre.value;
+                            editMovie.year = year.value;
+                            editMovie.rating = rating.value;
+                        }
+                    });
+                    movies.push(editMovie);
+                    add.textContent = "추가";
+                    editId = 0;
                 }
-                movies.push(newmovie);
+
+
                 render();
                 title.value = '';
                 director.value = '';
@@ -152,7 +167,7 @@
 </head>
 
 <body>
-    <form>
+    <form id="inputsection">
         제목:
         <input type="text" id="title">
         <br>
