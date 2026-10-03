@@ -33,7 +33,7 @@
 
 
         let editId = 0;
-        let delId=0;
+        let nextId = 4;
 
         function render() {
             const movielist = document.querySelector("#mlist");
@@ -58,7 +58,7 @@
 
                 tr.appendChild(td1);
                 tr.appendChild(td2);
-                tr.appendChild(td3);    
+                tr.appendChild(td3);
                 tr.appendChild(td4);
                 tr.appendChild(td5);
                 tr.appendChild(td6);
@@ -67,15 +67,15 @@
                 editBtn.textContent = "수정";
                 tr.appendChild(editBtn);
                 editBtn.addEventListener("click", function () {
-                    const title=document.querySelector("#title");
+                    const title = document.querySelector("#title");
                     title.value = movie.title;
-                    const director=document.querySelector("#director");
+                    const director = document.querySelector("#director");
                     director.value = movie.director;
-                    const genre=document.querySelector("#genre");
+                    const genre = document.querySelector("#genre");
                     genre.value = movie.genre;
-                    const year=document.querySelector("#year")
+                    const year = document.querySelector("#year")
                     year.value = movie.year;
-                    const rating=document.querySelector("#rating")
+                    const rating = document.querySelector("#rating")
                     rating.value = movie.rating;
                     const add = document.querySelector("#add");
                     add.textContent = "저장";
@@ -86,9 +86,22 @@
                 delBtn.textContent = "삭제";
                 tr.appendChild(delBtn);
                 delBtn.addEventListener("click", function () {
-                    if(confirm("삭제하시겠습니까?")){
-                        let IdIndex = movies.findIndex();
-                        movies.splice(IdIndex,1);
+                    if (confirm("삭제하시겠습니까?")) {
+                        let targetIndex = movies.findIndex(function (m) {
+                            return m.id === movie.id;
+                        });
+                        movies.splice(targetIndex, 1);
+
+                        if (editId === movie.id) {
+                            editId = 0;
+                            const add = document.querySelector("#add");
+                            add.textContent = "추가";
+                            title.value = '';
+                            director.value = '';
+                            genre.value = '';
+                            year.value = '';
+                            rating.value = '';
+                        }
                         render();
                     }
                 });
@@ -135,7 +148,7 @@
                     return;
                 }
                 if (editId == 0) {
-                    const ID = movies.length + 1;
+                    const ID = nextId++;
                     let newmovie = {
                         id: ID,
                         title: title.value,
@@ -145,8 +158,8 @@
                         rating: rating.value,
                     }
                     movies.push(newmovie);
-                }else{
-                    movies.forEach(function(editMovie) {
+                } else {
+                    movies.forEach(function (editMovie) {
                         if (editMovie.id == editId) {
                             editMovie.title = title.value;
                             editMovie.director = director.value;
@@ -158,8 +171,7 @@
                     add.textContent = "추가";
                     editId = 0;
                 }
-                let IdIndex = movies.findIndex();
-                movies.splice(IdIndex,1);
+
                 render();
                 title.value = '';
                 director.value = '';
