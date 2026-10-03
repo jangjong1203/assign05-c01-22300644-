@@ -30,7 +30,35 @@
                 rating: 8.8
             }
         ]
+        function render() {
+            const movielist = document.querySelector("#mlist");
+            movielist.innerHTML = '';
+            movies.forEach(function (movie) {
+                const tr = document.createElement("tr");
+                movielist.appendChild(tr);
 
+                let td1 = document.createElement("td");
+                let td2 = document.createElement("td");
+                let td3 = document.createElement("td");
+                let td4 = document.createElement("td");
+                let td5 = document.createElement("td");
+                let td6 = document.createElement("td");
+
+                td1.textContent = movie.id;
+                td2.textContent = movie.title;
+                td3.textContent = movie.genre
+                td4.textContent = movie.director;
+                td5.textContent = movie.year;
+                td6.textContent = movie.rating;
+
+                tr.appendChild(td1);
+                tr.appendChild(td2);
+                tr.appendChild(td3);
+                tr.appendChild(td4);
+                tr.appendChild(td5);
+                tr.appendChild(td6);
+            })
+        }
         window.addEventListener("load", function () {
             const title = document.querySelector("#title");
             const director = document.querySelector("#director");
@@ -38,6 +66,7 @@
             const year = document.querySelector("#year");
             const rating = document.querySelector("#rating");
             const add = document.querySelector("#add");
+            render();
             add.addEventListener("click", function (e) {
                 e.preventDefault();
                 if (title.value == '') {
@@ -81,13 +110,14 @@
                     rating: rating.value,
                 }
                 movies.push(newmovie);
-                console.log(movies);
+                render();
                 title.value = '';
                 director.value = '';
                 genre.value = '';
                 year.value = '';
                 rating.value = '';
             })
+
         })
 
 
@@ -124,7 +154,7 @@
                 <th>개봉연도</th>
                 <th>평점</th>
         </thead>
-        <tbody id="movielist">
+        <tbody id="mlist">
 
         </tbody>
     </table>

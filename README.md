@@ -17,14 +17,12 @@ CRUD Service
 JavaScript
 
     이번 과제에서 사용한 주요 JavaScript 기능을 설명합니다.
-
-    예:
-
-    querySelector()
-    addEventListener()
-    createElement()
+    consloe.log: 웹페이지 활동 학인
+    querySelector():위에거 하나 가져오기
+    addEventListener():이벤트발동시
+    createElement():만들기
     appendChild()
-    Array
+    Array:배열
     render()
 AI / Search Usage
 
