@@ -33,6 +33,7 @@
 
 
         let editId = 0;
+        let delId=0;
 
         function render() {
             const movielist = document.querySelector("#mlist");
@@ -62,24 +63,35 @@
                 tr.appendChild(td5);
                 tr.appendChild(td6);
 
-
                 const editBtn = document.createElement("button");
                 editBtn.textContent = "수정";
                 tr.appendChild(editBtn);
                 editBtn.addEventListener("click", function () {
-                    document.querySelector("#title").value = movie.title;
-                    document.querySelector("#director").value = movie.director;
-                    document.querySelector("#genre").value = movie.genre;
-                    document.querySelector("#year").value = movie.year;
-                    document.querySelector("#rating").value = movie.rating;
+                    const title=document.querySelector("#title");
+                    title.value = movie.title;
+                    const director=document.querySelector("#director");
+                    director.value = movie.director;
+                    const genre=document.querySelector("#genre");
+                    genre.value = movie.genre;
+                    const year=document.querySelector("#year")
+                    year.value = movie.year;
+                    const rating=document.querySelector("#rating")
+                    rating.value = movie.rating;
                     const add = document.querySelector("#add");
                     add.textContent = "저장";
                     editId = movie.id;
                 });
 
-                const DelBtn = document.createElement("button");
-                DelBtn.textContent = "삭제";
-                tr.appendChild(DelBtn);
+                const delBtn = document.createElement("button");
+                delBtn.textContent = "삭제";
+                tr.appendChild(delBtn);
+                delBtn.addEventListener("click", function () {
+                    if(confirm("삭제하시겠습니까?")){
+                        let IdIndex = movies.findIndex();
+                        movies.splice(IdIndex,1);
+                        render();
+                    }
+                });
             })
         }
         window.addEventListener("load", function () {
@@ -146,8 +158,8 @@
                     add.textContent = "추가";
                     editId = 0;
                 }
-
-
+                let IdIndex = movies.findIndex();
+                movies.splice(IdIndex,1);
                 render();
                 title.value = '';
                 director.value = '';
