@@ -24,12 +24,27 @@
             }, {
                 id: 3,
                 title: "인터스텔라",
-                director: "크리스토퍼놀란",
+                director: "크리스토퍼 놀란",
                 genre: "SF",
                 year: 2014,
                 rating: 8.8
             }
         ]
+
+        function editButton(id) {
+            movies.forEach(function (movie) {
+                if (movie.id==id) {
+                    id = movie.id;
+                    title.value = movie.title;
+                    director.value = movie.director;
+                    genre.value = movie.genre;
+                    year.value = movie.year;
+                    rating.value = movie.rating;
+                }
+            })
+        }
+
+
         function render() {
             const movielist = document.querySelector("#mlist");
             movielist.innerHTML = '';
@@ -57,6 +72,18 @@
                 tr.appendChild(td4);
                 tr.appendChild(td5);
                 tr.appendChild(td6);
+
+
+                const editBtn = document.createElement("button");
+                editBtn.textContent = "수정";
+                tr.appendChild(editBtn);
+                editBtn.addEventListener("click", editButton(movie.id));
+
+                const DelBtn = document.createElement("button");
+                DelBtn.textContent = "삭제";
+                tr.appendChild(DelBtn);
+
+
             })
         }
         window.addEventListener("load", function () {
