@@ -5,6 +5,70 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: powderblue;
+            max-width: 800px;
+            margin: px;
+            padding: px;
+
+        }
+
+        #inputsection {
+            background-color: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+
+        }
+
+        #inputsection input {
+            width: 100%;
+            background-color: white;
+            padding: 5px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            font-size: 15px;
+
+        }
+
+        #add {
+            border-radius: 5px;
+            width: 33%;
+            margin-left: 33%;
+            background-color: rgb(140, 213, 242);
+
+        }
+
+        #add:hover {
+            background-color: rgb(72, 148, 178);
+        }
+
+        table {
+            border-radius: 10px;
+            width: 100%;
+            background-color: azure;
+            text-align: center;
+        }
+
+
+        th,
+        td {
+            padding: 5px;
+        }
+
+        th {
+            background-color: #a3afbb;
+            font-weight: bold;
+        }
+        tr button{
+            background-color:rgb(140, 213, 242);
+        }   
+        tr button:hover{
+            background-color: rgb(72, 148, 178);
+        }   
+    </style>
     <script>
         let movies = [
             {
@@ -139,7 +203,7 @@
                     year.focus();
                     e.preventDefault();
                     return;
-                }else if(isNaN(year.value)) {
+                } else if (isNaN(year.value)) {
                     alert("개봉연도는 숫자로 입력하시오!");
                     year.focus();
                     e.preventDefault();
@@ -151,18 +215,18 @@
                     e.preventDefault();
                     return;
 
-                } else if(isNaN(rating.value)){
+                } else if (isNaN(rating.value)) {
                     alert("평점은 숫자로 입력하시오!");
-                        rating.focus();
-                        e.preventDefault();
-                        return;
+                    rating.focus();
+                    e.preventDefault();
+                    return;
                 } else if (rating.value < 0 || rating.value > 10) {
-                        alert("평점은 0점에서 10점 사이로 입력하시오!");
-                        rating.focus();
-                        e.preventDefault();
-                        return;
-                    }
-                
+                    alert("평점은 0점에서 10점 사이로 입력하시오!");
+                    rating.focus();
+                    e.preventDefault();
+                    return;
+                }
+
                 if (editId == 0) {
                     const ID = nextId++;
                     let newmovie = {
@@ -231,9 +295,9 @@
                 <th>감독</th>
                 <th>개봉연도</th>
                 <th>평점</th>
+                <th>내용변경</th>
         </thead>
         <tbody id="mlist">
-
         </tbody>
     </table>
 
